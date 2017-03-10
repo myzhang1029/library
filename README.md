@@ -1,2 +1,2 @@
 # library manager
-![Build Status](https://travis-ci.org/myzhang1029/library.svg?branch=master)
+![](https://www.gnu.org/graphics/gplv3-88x31.png)

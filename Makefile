@@ -1,5 +1,9 @@
 CC=gcc
+<<<<<<< HEAD
 CFLAGS=-lm -O2
+=======
+CFLAGS=-O2
+>>>>>>> 79b5db151f915760db5d02b63e1bef71406f32e3
 all:;!ERROR You must specify win|linux
 
 linux:library
