@@ -1,20 +1,35 @@
 CC=gcc
-CFLAGS=-lm -O2 -L. -lsbl
 RM=rm
-
+CFLAGS=-lm -O2 -Wall -L. -lsbl -Islib/include
 err:
-	@echo "You must specify win|unix"
+	@echo 'Please do make PLATFORM:'
+	@echo '	win:Windows, MinGW'
+	@echo '	unix:UNIX, GNU/Linux, BSD'
+	@exit 1
 
 unix:library
 win:library.exe
 
-library.exe:./src/slib.h ./src/library.c
-	$(CC) $(CFLAGS) -DPLAT=1 src/library.c -o library
+library.exe:library.c 
+	@if ! [ -f slib/Makefile ] ; then\
+		echo slib/Makefile not found!;\
+		echo Is this project cloned with --recursive option?;\
+		echo If not, please do 'git submodule init&&git submodule update';\
+	exit 1;\
+	fi
+	cd slib;make win 
+	cp slib/libsbl.dll .
+	$(CC) library.c -o library $(CFLAGS) -DPLAT=1
 
-library:./src/slib.h ./src/library.c
-	$(CC) $(CFLAGS) -DPLAT=0 src/library.c -o library
-
+library:library.c
+	@if ! [ -f slib/Makefile ] ; then\
+		echo slib/Makefile not found!;\
+		echo Is this project cloned with --recursive option?;\
+		echo If not, please do 'git submodule init&&git submodule update';\
+	exit 1;\
+	fi
+	cd slib;make unix
+	cp slib/libsbl.so .
+	$(CC) library.c -o library $(CFLAGS) -DPLAT=0
 .PHONY:clean
-
-clean:
 	$(RM) *.o
