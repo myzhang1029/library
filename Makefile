@@ -17,9 +17,9 @@ library.exe:library.c
 		echo If not, please do 'git submodule init&&git submodule update';\
 	exit 1;\
 	fi
-	cd slib;make win 
-	cp slib/libsbl.dll .
-	$(CC) library.c -o library $(CFLAGS) -DPLAT=1
+	cd slib;./configure --cc=$(CC) --target=win --prefix='../'
+	make -C slib&&make -C slib install
+	$(CC) library.c -o library $(CFLAGS) -DPLAT=1 libsbl.a
 
 library:library.c
 	@if ! [ -f slib/Makefile ] ; then\
@@ -28,8 +28,10 @@ library:library.c
 		echo If not, please do 'git submodule init&&git submodule update';\
 	exit 1;\
 	fi
-	cd slib;make unix
-	cp slib/libsbl.so .
-	$(CC) library.c -o library $(CFLAGS) -DPLAT=0
+	cd slib;./configure --cc=$(CC) --target=unix --prefix='../'
+	make -C slib&&make -C slib install
+	$(CC) library.c -o library $(CFLAGS) -DPLAT=0 libsbl.a
 .PHONY:clean
+clean:
 	$(RM) *.o
+	make -C slib distclean
