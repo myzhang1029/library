@@ -1,52 +1,82 @@
+# Autotools files
+.deps/
+Makefile
+autom4te.cache/
+config.log
+config.h
+config.status
+stamp-h1
+
 # Object files
-
 *.o
-
 *.ko
-
 *.obj
-
 *.elf
 
-
 # Precompiled Headers
-
 *.gch
-
 *.pch
 
-
-# Executables
-
-
-*.out
-
-*.app
-
-*.i
-*.x86
-
-*.x86_64
-
-*.hex
-
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+# Binary
 *.exe
-
 *.dll
-
 *.so
+library
 
-# Debug files
+# =========================
+# Operating System Files
+# =========================
 
-*.dSYM
+# OSX
+# =========================
 
-*.su
+.DS_Store
+.AppleDouble
+.LSOverride
 
-# Others
+# Thumbnails
+._*
 
-*.def
-*.book*
-*.user*
-/current/index.txt
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+# =========================
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# Temporary files
 *.c~
 *.h~
+
+

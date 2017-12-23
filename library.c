@@ -23,8 +23,10 @@
  */
 
 #include "slib.h"
+#include <string.h>
+#include <stdlib.h>
 
-ccp ver ="1.0.1";
+ccp ver ="0.1.2";
 const char bok[6]="b";
 const char usr[6]="u";
 
